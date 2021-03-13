@@ -1,0 +1,71 @@
+body {
+  background-color: #222;
+  color: #ddd;
+  padding-bottom: 50px;
+}
+
+h1 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 75px;
+}
+
+.applications {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 25px;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 75px 50px 25px 50px;
+}
+
+.application-card {
+	position: relative;
+	background-color: #111;
+	transition: transform .5s;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.application-card:hover {
+	transform: scale(1.02);
+}
+
+.application-card .wrap {
+	padding: 10px;
+}
+
+.application-card .photo {
+	width: 100%;
+	object-fit: cover;
+}
+
+.application-card .verify_del {
+	display: none;
+}
+
+.application-card .delete,
+.verify_del button,
+.verify_del a {
+	border: none;
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 15px;
+	text-decoration: none;
+	color: #111;
+	font-size: 18px;
+	background-color: white;
+	border-radius: 3px;
+}
+
+.application-card .delete {
+}
+
+.application-card .delete:hover,
+.verify_del a:hover {
+	background-color: red;
+	color: #ddd;
+}

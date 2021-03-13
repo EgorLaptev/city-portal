@@ -1,7 +1,4 @@
-<?php 
-  if(session_status() != 2) session_start(); 
-  require_once 'core/connect.php';
-?>
+<?php if(session_status() != 2) session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +8,7 @@
   <title>Улучши свой город</title>
   <link rel="stylesheet" href="./media/css/bootstrap.min.css">
   <link rel="stylesheet" href="./media/css/header.css">
-  <link rel="stylesheet" href="./media/css/index.css">
+  <link rel="stylesheet" href="./media/css/list.css">
 </head>
 
 <body>
@@ -32,12 +29,13 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="http://wsrq/">Главная</a></li>
+          <li class=""><a href="http://wsrq/">Главная</a></li>
           <?php if(isset($_SESSION['login']) && !empty(trim($_SESSION['login']))) : ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <?php
 
+                  require_once 'core/connect.php';
                   $login = $_SESSION['login'];
                   $resp = $pdo->query("SELECT * FROM `users` WHERE `login` = '$login' LIMIT 1");
                   $user = $resp->fetch(PDO::FETCH_ASSOC);
@@ -47,9 +45,6 @@
                 ?>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <?php if($_SESSION['login'] == 'admin') : ?>
-                  <li><a href="panel.php">Панель управления</a></li>
-                <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>
                 <li role="separator" class="divider"></li>
@@ -65,56 +60,63 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Привет, дорогой друг!</h1>
-      <p>
-        Вместе мы сможем улучшить наш любимый город. Нам очень сложно узнать обо всех проблемах города, поэтому мы
-        предлагаем тебе помочь своему городу!
-      </p>
-      <p>
-        С нами уже целых <?=($pdo->query("SELECT * FROM `users`")->rowCount());?> пользователей!<br>
-        Всего мы решили <?=($pdo->query("SELECT * FROM `applications` WHERE `status` = 'solved'")->rowCount());?> проблем!
-      </p>
-      <p>
-        Увидел проблему? Дай нам знать о ней и мы ее решим!
-      </p>
-      <p>
-        <a class="btn btn-success btn-lg" href="#" role="button">Сообщить о проблеме</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Присоедениться к проекту</a>
-      </p>
-    </div>
-  </div>
+    <h1>Мои заявки</h1>
 
-  <div class="container">
-    <h2>Последние решенные проблемы</h2>
-    <br>
-    <div class="wrap">
-      <?php 
+  <div class="applications">
 
-        $resp = $pdo->query("SELECT * FROM `applications` WHERE `status` = '1' LIMIT 8");
-        $apps = $resp->fetchAll(PDO::FETCH_ASSOC);
+    <?php 
 
-        foreach ($apps as $app) :
+      require_once 'core/connect.php';
 
-      ?>
+      $author = $_SESSION['login'];
+      $resp = $pdo->query("SELECT * FROM `applications` WHERE `author` = '$author'");
+      $apps = $resp->fetchAll(PDO::FETCH_ASSOC);
 
-      <div class="couple">
-        <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
-        <div class="wrap">
-          <span class="date"><?=$app['date']?></span><br>
-          <h3 class="title"><?=$app['title']?></h3><br>
-          <p class="description"><?=$app['description']?></p><br>
-          <span class="category">Категория: <?=$app['category']?></span><br>
+      foreach ($apps as $app) :
+
+    ?>
+
+    <div class="application-card">
+      <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
+      <div class="wrap">
+        <span class="date"><?=$app['date']?></span><br>
+
+        <h3 class="title"><?=$app['title']?></h3>
+        <p class="description"><?=$app['description']?></p>
+        <span class="category">Категория: <?=$app['category']?></span><br>
+        <span class="status">Статус: 
+          <?php 
+            switch ($app['status']) {
+              case '0': {
+                echo 'Новая';
+                break;
+              }
+              case '1': {
+                echo 'Решена';
+                break;
+              }
+              case '2': {
+                echo 'Отклонена';
+                break;
+              }
+            }
+          ?>
+        </span><br>
+        <button id="del" class="delete">Удалить</button>
+        <div class="verify_del">
+          <button id="cancel" class="cancel">Отменить</button>
+          <a href="/core/del_app.php?id=<?=$app['id']?>">Удалить</a>
         </div>
       </div>
-
-      <?php endforeach; ?>
     </div>
+
+    <?php endforeach; ?>
+
   </div>
 
   <script src="./media/js/jquery-3.3.1.min.js"></script>
   <script src="./media/js/bootstrap.js"></script>
+  <script src="./media/js/list.js"></script>
 </body>
 
 </html>

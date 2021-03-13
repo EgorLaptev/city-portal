@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $db_host = 'localhost';
 $db_name = 'wsrq';

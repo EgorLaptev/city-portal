@@ -1,7 +1,4 @@
-<?php 
-  if(session_status() != 2) session_start(); 
-  require_once 'core/connect.php';
-?>
+<?php if(session_status() != 2) session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +8,7 @@
   <title>Улучши свой город</title>
   <link rel="stylesheet" href="./media/css/bootstrap.min.css">
   <link rel="stylesheet" href="./media/css/header.css">
-  <link rel="stylesheet" href="./media/css/index.css">
+  <link rel="stylesheet" href="./media/css/new.css">
 </head>
 
 <body>
@@ -38,6 +35,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <?php
 
+                  require_once 'core/connect.php';
                   $login = $_SESSION['login'];
                   $resp = $pdo->query("SELECT * FROM `users` WHERE `login` = '$login' LIMIT 1");
                   $user = $resp->fetch(PDO::FETCH_ASSOC);
@@ -47,9 +45,6 @@
                 ?>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <?php if($_SESSION['login'] == 'admin') : ?>
-                  <li><a href="panel.php">Панель управления</a></li>
-                <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>
                 <li role="separator" class="divider"></li>
@@ -65,53 +60,25 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Привет, дорогой друг!</h1>
-      <p>
-        Вместе мы сможем улучшить наш любимый город. Нам очень сложно узнать обо всех проблемах города, поэтому мы
-        предлагаем тебе помочь своему городу!
-      </p>
-      <p>
-        С нами уже целых <?=($pdo->query("SELECT * FROM `users`")->rowCount());?> пользователей!<br>
-        Всего мы решили <?=($pdo->query("SELECT * FROM `applications` WHERE `status` = 'solved'")->rowCount());?> проблем!
-      </p>
-      <p>
-        Увидел проблему? Дай нам знать о ней и мы ее решим!
-      </p>
-      <p>
-        <a class="btn btn-success btn-lg" href="#" role="button">Сообщить о проблеме</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Присоедениться к проекту</a>
-      </p>
-    </div>
-  </div>
+  <form enctype="multipart/form-data" class="new" action="core/new.php" method="post">
+    <input type="text" name="title" placeholder="Название" required>
+    <textarea  name="description" rows="8" cols="80" placeholder="Описание" required></textarea>
+    <select name="category" required>
+      <option value="1">Категория 1</option>
+      <option value="2">Категория 2</option>
+      <option value="3">Категория 3</option>
+    </select>
+    <label class="photo-label">
+      Прикрепить фото
+      <input type="file" name="photo" required>
+    </label>
+    <input type="date" name="date" required>
+    <input type="submit" name="new" value="Добавить заявку">
+  </form>
 
-  <div class="container">
-    <h2>Последние решенные проблемы</h2>
-    <br>
-    <div class="wrap">
-      <?php 
-
-        $resp = $pdo->query("SELECT * FROM `applications` WHERE `status` = '1' LIMIT 8");
-        $apps = $resp->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($apps as $app) :
-
-      ?>
-
-      <div class="couple">
-        <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
-        <div class="wrap">
-          <span class="date"><?=$app['date']?></span><br>
-          <h3 class="title"><?=$app['title']?></h3><br>
-          <p class="description"><?=$app['description']?></p><br>
-          <span class="category">Категория: <?=$app['category']?></span><br>
-        </div>
-      </div>
-
-      <?php endforeach; ?>
-    </div>
-  </div>
+  <span class="error">
+    <?php if(isset($_SESSION['new_error'])) echo $_SESSION['new_error']; ?>
+  </span>
 
   <script src="./media/js/jquery-3.3.1.min.js"></script>
   <script src="./media/js/bootstrap.js"></script>

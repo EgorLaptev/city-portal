@@ -1,0 +1,102 @@
+body {
+  background-color: #222;
+  color: #ddd;
+  padding-bottom: 50px;
+}
+
+.new {
+  display: grid;
+  grid-template: repeat(4, 50px) / repeat(3, 1fr);
+  grid-template-areas:
+    'tit tit des'
+    'cat cat des'
+    'dat pho des'
+    'new new new';
+  grid-gap: 10px;
+  width: 80%;
+  margin: 100px auto 25px auto;
+  color: #ddd;
+}
+
+.new input[name='title'] {
+  grid-area: tit;
+}
+
+.new textarea[name='description'] {
+  grid-area: des;
+  resize: none;
+  padding: 10px;
+}
+
+.new select[name='category'] {
+  grid-area: cat;
+}
+
+.new .photo-label {
+  border: 3px solid white;
+  background-color: transparent;
+  height: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  line-height: 45px;
+  transition: .5s;
+}
+
+.new .photo-label:hover {
+  background-color: white;
+  color: #111;
+}
+
+.new input[name='photo'] {
+  grid-area: pho;
+  display: none;
+}
+
+.new input[name='date'] {
+  grid-area: dat;
+}
+
+.new input[name='new'] {
+  grid-area: new;
+}
+
+.new input,
+.new select,
+.new textarea {
+  border-radius: 0;
+  border: none;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #222;
+}
+
+.new input::placeholder,
+.new select::placeholder,
+.new textarea::placeholder {
+  transition: .3s;
+  color: #555;
+}
+
+.new input:hover::placeholder,
+.new select:hover::placeholder,
+.new textarea:hover::placeholder {
+  opacity: 0;
+}
+
+.new input[type='submit'] {
+  transition: background .2s;
+}
+
+.new input[type='submit']:hover {
+  background-color: #ccc;
+}
+
+.new input[name='description'] {}
+
+.error {
+  display: block;
+  color: red;
+  width: 100%;
+  text-align: center;
+}
