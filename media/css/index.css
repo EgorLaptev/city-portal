@@ -1,0 +1,51 @@
+body {
+  background-color: #222;
+  color: #ddd;
+  padding-bottom: 50px;
+}
+
+.jumbotron {
+  background-color: #333;
+}
+
+.jumbotron a[class^='btn'] {
+  border-radius: 0;
+}
+
+.container .wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+}
+
+.couple img {
+  width: 50%;
+  object-fit: cover;
+}
+
+.couple {
+  transition: .5s;
+  display: flex;
+  flex-direction: row;
+}
+
+.couple:hover {
+  transform: scale(1.03);
+}
+
+@media screen and (max-width: 995px) {
+  .container .wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container .wrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .jumbotron a[class^='btn'] {
+    width: 100%;
+    margin: 5px 0;
+  }
+}

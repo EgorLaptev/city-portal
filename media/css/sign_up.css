@@ -1,0 +1,45 @@
+body {
+  background-color: #222;
+}
+
+.sign_up {
+  display: grid;
+  grid-template: repeat(4, 50px) / repeat(2, 1fr);
+  grid-gap: 10px;
+  width: 80%;
+  margin: 100px auto 25px auto;
+  color: #ddd;
+}
+
+.sign_up input {
+  border-radius: 0;
+  border: none;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #222;
+}
+
+.sign_up input::placeholder {
+  transition: .3s;
+  color: #555;
+}
+
+.sign_up input:hover::placeholder {
+  opacity: 0;
+}
+
+.sign_up input[type='submit'] {
+  grid-column: 1 / -1;
+  transition: background .2s;
+}
+
+.sign_up input[type='submit']:hover {
+  background-color: #ccc;
+}
+
+.error {
+  display: block;
+  color: red;
+  width: 100%;
+  text-align: center;
+}
