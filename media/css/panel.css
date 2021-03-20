@@ -23,7 +23,7 @@ ul {
   margin: 0 auto;
 }
 
-.cats {
+.wrap>div {
   text-align: center;
   display: inline-block;
 }

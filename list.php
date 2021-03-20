@@ -45,6 +45,9 @@
                 ?>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <?php if($_SESSION['login'] == 'admin') : ?>
+                  <li><a href="panel.php">Панель управления</a></li>
+                <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>
                 <li role="separator" class="divider"></li>

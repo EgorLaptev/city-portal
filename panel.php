@@ -98,6 +98,13 @@
       </ul>
     </div>
 
+    <div class="solve">
+      <h3>Заявки</h3>
+      <ul>
+        <li>1</li>
+      </ul>
+    </div>
+
   </div>
 
   <script src="./media/js/jquery-3.3.1.min.js"></script>
