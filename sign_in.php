@@ -30,13 +30,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class=""><a href="http://city-portal/">Главная</a></li>
-          <li><a href="sign_up.php">Зарегистрироваться</a></li>
+          <li><a href="sign_up.php">Войти</a></li>
           <li class="active"><a href="sign_in.php">Войти</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+  <h1>Войти</h1>
 
   <form class="sign_in" action="core/sign_in.php" method="post">
     <input type="text" name="login" placeholder="Логин" pattern="[A-Za-z]{0,}" required>

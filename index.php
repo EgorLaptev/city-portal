@@ -80,8 +80,8 @@
         Увидел проблему? Дай нам знать о ней и мы ее решим!
       </p>
       <p>
-        <a class="btn btn-success btn-lg" href="#" role="button">Сообщить о проблеме</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Присоедениться к проекту</a>
+        <a class="btn btn-success btn-lg" href="./new.php" role="button" >Сообщить о проблеме</a>
+        <a class="btn btn-primary btn-lg" href="./sign_up.php" role="button">Присоедениться к проекту</a>
       </p>
     </div>
   </div>

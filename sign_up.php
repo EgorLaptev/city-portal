@@ -37,6 +37,7 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+  <h1>Зарегистрироваться</h1>
 
   <form class="sign_up" action="core/sign_up.php" method="post">
     <input type="text" name="fullname" placeholder="ФИО" pattern="[А-Яа-яЁё]{0,}\s[А-Яа-яЁё]{0,}\s[А-Яа-яЁё]{0,}" required>

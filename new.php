@@ -1,4 +1,7 @@
-<?php if(session_status() != 2) session_start(); ?>
+<?php
+  if(session_status() != 2) session_start();
+  require_once 'core/connect.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -35,7 +38,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <?php
 
-                  require_once 'core/connect.php';
                   $login = $_SESSION['login'];
                   $resp = $pdo->query("SELECT * FROM `users` WHERE `login` = '$login' LIMIT 1");
                   $user = $resp->fetch(PDO::FETCH_ASSOC);
@@ -60,13 +62,21 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+  <h1>Сообщите о проблеме</h1>
+
   <form enctype="multipart/form-data" class="new" action="core/new.php" method="post">
     <input type="text" name="title" placeholder="Название" required>
     <textarea  name="description" rows="8" cols="80" placeholder="Описание" required></textarea>
     <select name="category" required>
-      <option value="1">Категория 1</option>
-      <option value="2">Категория 2</option>
-      <option value="3">Категория 3</option>
+      <?php
+
+      $cats = $pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_ASSOC);
+
+      foreach($cats as $cat) :
+
+      ?>
+      <option value="<?= $cat['id'] ?>"><?=$cat['name']?></option>
+      <?php endforeach; ?>
     </select>
     <label class="photo-label">
       Прикрепить фото

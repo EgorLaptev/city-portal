@@ -18,13 +18,12 @@ if(isset($_POST['new'])) {
   if(isset($_POST['category']) && !empty(trim($_POST['category']))) $category = trim($_POST['category']);
   else $error = 'Please, choose category!';
 
-
   if(isset($_FILES['photo'])) $photo = addslashes(file_get_contents($_FILES['photo']['tmp_name']));
   else $error = 'Please, add photo!';
 
   if(isset($_FILES['photo']) && (!in_array($_FILES['photo']['type'], $allowed_types))) $error = 'Allowed formats: ' . implode(', ', $allowed_types);
 
-  if(isset($_FILES['photo']) && $_FILES['photo']['size'] > (1024*1024*10)) $error = 'Your photo is very large!';
+  if(isset($_FILES['photo']) && filesize($_FILES['photo']['tmp_name']) > (1024*1024*10)) $error = 'Your photo is very large!';
 
   if(isset($_POST['date']) && !empty(trim($_POST['date']))) $date = trim($_POST['date']);
   else $error = 'Please, choose date!';
