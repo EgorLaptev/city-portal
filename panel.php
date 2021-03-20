@@ -74,8 +74,6 @@
       <ul class="categories_add">
         <?php
 
-          require_once 'core/connect.php';
-
           $resp = $pdo->query("SELECT * FROM `categories`");
           $cats = $resp->fetchAll(PDO::FETCH_ASSOC);
 
@@ -101,7 +99,31 @@
     <div class="solve">
       <h3>Заявки</h3>
       <ul>
-        <li>1</li>
+        <?php
+
+        $resp = $pdo->query("SELECT * FROM `applications` WHERE `status` = 0");
+        $apps = $resp->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($apps as $app) :
+
+        ?>
+
+        <li>
+          <div class="application-card">
+            <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
+            <div class="wrap">
+              <span class="date"><?=$app['date']?></span><br>
+
+              <h3 class="title"><?=$app['title']?></h3>
+              <p class="description"><?=$app['description']?></p>
+              <span class="category">Категория: <?=$app['category']?></span><br>
+              <a href="./complete_app.php?id=<?=$app['id']?>" class="complete">Выполнено</a>
+              <a href="./core/reject_app.php?id=<?=$app['id']?>" class="reject">Отклонить</a>
+            </div>
+          </div>
+        </li>
+
+        <?php endforeach; ?>
       </ul>
     </div>
 

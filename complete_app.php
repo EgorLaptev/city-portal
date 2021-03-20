@@ -11,7 +11,7 @@
   <title>Улучши свой город</title>
   <link rel="stylesheet" href="./media/css/bootstrap.min.css">
   <link rel="stylesheet" href="./media/css/header.css">
-  <link rel="stylesheet" href="./media/css/new.css">
+  <link rel="stylesheet" href="./media/css/complete_app.css">
 </head>
 
 <body>
@@ -65,30 +65,14 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <h1>Сообщите о проблеме</h1>
+  <form enctype="multipart/form-data" class="complete_app" action="core/complete_app.php" method="POST">
 
-  <form enctype="multipart/form-data" class="new" action="core/new.php" method="post">
-    <input type="text" name="title" placeholder="Название" required>
-    <textarea  name="description" rows="8" cols="80" placeholder="Описание" required></textarea>
-    <select name="category" required>
-      <?php
-        $cats = $pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_ASSOC);
-        foreach($cats as $cat) :
-      ?>
-      <option value="<?= $cat['name'] ?>"><?=$cat['name']?></option>
-      <?php endforeach; ?>
-    </select>
-    <label class="photo-label">
-      Прикрепить фото
-      <input type="file" name="photo" required>
+    <label>
+      +
+      <input type="file" name="photo">
     </label>
-    <input type="date" name="date" required>
-    <input type="submit" name="new" value="Добавить заявку">
+    <input type="submit" name="complete_app" value="Сonfirm">
   </form>
-
-  <span class="error">
-    <?php if(isset($_SESSION['new_error'])) echo $_SESSION['new_error']; ?>
-  </span>
 
   <script src="./media/js/jquery-3.3.1.min.js"></script>
   <script src="./media/js/bootstrap.js"></script>
