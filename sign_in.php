@@ -42,7 +42,7 @@
   <form class="sign_in" action="core/sign_in.php" method="post">
     <input type="text" name="login" placeholder="Логин" pattern="[A-Za-z]{0,}" required>
     <input type="password" name="password" placeholder="Пароль" required>
-    <input type="submit" name="sign_in" value="Зарегистрироваться" required>
+    <input type="submit" name="sign_in" value="Войти" required>
   </form>
 
   <span class="error"><?php if(isset($_SESSION['log_error'])) echo $_SESSION['log_error'] ?></span>

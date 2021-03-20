@@ -69,11 +69,8 @@
     <textarea  name="description" rows="8" cols="80" placeholder="Описание" required></textarea>
     <select name="category" required>
       <?php
-
-      $cats = $pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_ASSOC);
-
-      foreach($cats as $cat) :
-
+        $cats = $pdo->query("SELECT * FROM `categories`")->fetchAll(PDO::FETCH_ASSOC);
+        foreach($cats as $cat) :
       ?>
       <option value="<?= $cat['id'] ?>"><?=$cat['name']?></option>
       <?php endforeach; ?>
