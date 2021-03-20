@@ -36,7 +36,7 @@ if(isset($_POST['sign_up'])) {
       if($resp) {
         $_SESSION['login'] = $login;
         $_SESSION['reg_error'] = '';
-        header('Location: ' . 'http://wsrq/');
+        header('Location: ' . 'http://city-portal/');
       } else $error = 'Something went wrong!';
 
     } else $error = 'User with such login is already exists!';

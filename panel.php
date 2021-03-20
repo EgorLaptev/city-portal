@@ -1,5 +1,5 @@
-<?php 
-  if(session_status() != 2) session_start(); 
+<?php
+  if(session_status() != 2) session_start();
   require_once 'core/connect.php';
 ?>
 <!doctype html>
@@ -26,13 +26,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://wsrq/"><img src="./media/img/logo.jpg" alt="logo"></a>
+        <a class="navbar-brand" href="http://city-portal/"><img src="./media/img/logo.jpg" alt="logo"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class=""><a href="http://wsrq/">Главная</a></li>
+          <li class=""><a href="http://city-portal/">Главная</a></li>
           <?php if(isset($_SESSION['login']) && !empty(trim($_SESSION['login']))) : ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -68,11 +68,11 @@
   <h1>Панель администратора</h1>
 
   <div class="wrap">
-    
+
     <div class="cats">
       <h3>Категории</h3>
       <ul class="categories_add">
-        <?php 
+        <?php
 
           require_once 'core/connect.php';
 
@@ -84,7 +84,7 @@
         ?>
 
         <li>
-          <?= $cat['name'] ?>
+          <?= $cat['name'] ?> <a href="./core/del_cat.php?id=<?=$cat['id']?>">x</a>
         </li>
 
         <?php endforeach; ?>
@@ -94,7 +94,6 @@
             <input type="submit" name="add_cat" value="Добавить">
             <span class="error"><?php if(isset($_SESSION['cat_error'])) echo $_SESSION['cat_error']; ?></span>
           </form>
-
         </li>
       </ul>
     </div>

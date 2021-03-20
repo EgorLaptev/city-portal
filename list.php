@@ -23,13 +23,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://wsrq/"><img src="./media/img/logo.jpg" alt="logo"></a>
+        <a class="navbar-brand" href="http://city-portal/"><img src="./media/img/logo.jpg" alt="logo"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class=""><a href="http://wsrq/">Главная</a></li>
+          <li class=""><a href="http://city-portal/">Главная</a></li>
           <?php if(isset($_SESSION['login']) && !empty(trim($_SESSION['login']))) : ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -64,7 +64,7 @@
 
   <div class="applications">
 
-    <?php 
+    <?php
 
       require_once 'core/connect.php';
 
@@ -84,8 +84,8 @@
         <h3 class="title"><?=$app['title']?></h3>
         <p class="description"><?=$app['description']?></p>
         <span class="category">Категория: <?=$app['category']?></span><br>
-        <span class="status">Статус: 
-          <?php 
+        <span class="status">Статус:
+          <?php
             switch ($app['status']) {
               case '0': {
                 echo 'Новая';

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(isset($_POST['add_cat'])) {
 
@@ -13,16 +13,18 @@ if(isset($_POST['add_cat'])) {
 
 		require_once 'connect.php';
 
-		$resp = $pdo->query("INSERT INTO `categories` (`id`, `name`) VALUES (NULL, '$name')");
+		$exist = $pdo->query("SELECT * FROM `categories` WHERE `name` = '$name' LIMIT 1")->rowCount();
 
-		if(!$resp) $error = 'Something went wrong!';
+		if(!$exist) {
+			$resp = $pdo->query("INSERT INTO `categories` (`id`, `name`) VALUES (NULL, '$name')");
+			if(!$resp) $error = 'Something went wrong!';
+		} else $error = 'Category with same name already exists!';
 
 	}
 
 	$_SESSION['cat_error'] = $error;
 
 }
-
 
 header("Location: " . $_SERVER['HTTP_REFERER']);
 

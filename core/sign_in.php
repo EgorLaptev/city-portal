@@ -23,7 +23,7 @@ if(isset($_POST['sign_in'])) {
 
       if($user['password'] === $password) {
         $_SESSION['login'] = $login;
-        header('Location: ' . 'http://wsrq/');
+        header('Location: ' . 'http://city-portal/');
       } else $error = 'Wrong password!';
 
     } else $error = 'We cannot found user with such login!';

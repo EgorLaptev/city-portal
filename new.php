@@ -23,13 +23,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://wsrq/"><img src="./media/img/logo.jpg" alt="logo"></a>
+        <a class="navbar-brand" href="http://city-portal/"><img src="./media/img/logo.jpg" alt="logo"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="http://wsrq/">Главная</a></li>
+          <li class="active"><a href="http://city-portal/">Главная</a></li>
           <?php if(isset($_SESSION['login']) && !empty(trim($_SESSION['login']))) : ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

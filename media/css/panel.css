@@ -13,38 +13,66 @@ h1 {
 }
 
 ul {
-	
+  padding: 0;
 }
 
 .wrap {
-	width: 100%;
-	max-width: 1008px;
-	padding: 25px 50px;
-	margin: 0 auto;
+  width: 100%;
+  max-width: 1008px;
+  padding: 25px 50px;
+  margin: 0 auto;
+}
+
+.cats {
+  text-align: center;
+  display: inline-block;
 }
 
 .categories_add {
-	list-style-type: " - ";
-	position: relative;
-	width: 390px;
-	padding: 20px;
-	border-radius: 3px;
-	border: 2px solid white;
-}
-
-.categories_add li:last-child {
-	list-style: none;
+  list-style: none;
+  position: relative;
+  width: 390px;
+  padding: 20px;
 }
 
 .categories_add li {
-	font-size: 17px;
-	margin: 10px 0;
-	color: white;
+  position: relative;
+  overflow: hidden;
 }
 
-.add_cat input {
-	padding: 
+.categories_add li:not(:last-child) a {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 15px;
+  outline: none;
+  text-decoration: none;
+  color: #222;
+  line-height: 225%;
 }
+
+.categories_add li:not(:last-child) a:hover {
+  background-color: #ddd;
+}
+
+.categories_add li:last-child {
+  list-style: none;
+  margin-top: 25px;
+}
+
+.categories_add li:not(:last-child) {
+  font-size: 20px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+  color: #222;
+  background-color: #fff;
+}
+
+.add_cat input {}
 
 .add_cat input {
   border-radius: 3px;
@@ -52,6 +80,8 @@ ul {
   padding: 10px 15px;
   font-size: 18px;
   color: #222;
+  width: 100%;
+  margin: 5px 0;
 }
 
 .add_cat input::placeholder {
