@@ -4,6 +4,15 @@ body {
   padding-bottom: 50px;
 }
 
+h1 {
+  text-align: center;
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  margin-top: 75px;
+  color: #ddd;
+}
+
 .new {
   display: grid;
   grid-template: repeat(4, 50px) / repeat(3, 1fr);
