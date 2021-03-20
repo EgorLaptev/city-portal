@@ -1,5 +1,6 @@
 <?php
   if(session_status() != 2) session_start();
+  if($_SESSION['login'] != 'admin') header("Location: http://city-portal/");
   require_once 'core/connect.php';
 ?>
 <!doctype html>
@@ -11,7 +12,7 @@
   <title>Улучши свой город</title>
   <link rel="stylesheet" href="./media/css/bootstrap.min.css">
   <link rel="stylesheet" href="./media/css/header.css">
-  <link rel="stylesheet" href="./media/css/panel.css">
+  <link rel="stylesheet" href="./media/css/admin.css">
 </head>
 
 <body>
@@ -48,7 +49,7 @@
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php if($_SESSION['login'] == 'admin') : ?>
-                  <li><a href="panel.php">Панель управления</a></li>
+                  <li><a href="admin.php">Панель управления</a></li>
                 <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>

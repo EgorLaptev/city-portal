@@ -47,6 +47,7 @@ body {
   overflow: hidden;
 }
 
+
 .couple:hover {
   transform: scale(1.02);
 }
@@ -55,7 +56,12 @@ body {
   padding: 10px;
 }
 
-.couple .photo {
-  width: 100%;
+.couple img {
+  width: 50%;
+  height: 175px;
   object-fit: cover;
+}
+
+.photo-wrap {
+  display: flex;
 }

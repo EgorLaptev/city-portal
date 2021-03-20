@@ -48,7 +48,7 @@
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php if($_SESSION['login'] == 'admin') : ?>
-                  <li><a href="panel.php">Панель управления</a></li>
+                  <li><a href="admin.php">Панель управления</a></li>
                 <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>
@@ -74,7 +74,7 @@
       </p>
       <p>
         С нами уже целых <?=($pdo->query("SELECT * FROM `users`")->rowCount());?> пользователей!<br>
-        Всего мы решили <?=($pdo->query("SELECT * FROM `applications` WHERE `status` = 'solved'")->rowCount());?> проблем!
+        Всего мы решили <?=($pdo->query("SELECT * FROM `applications` WHERE `status` = '1'")->rowCount());?> проблем!
       </p>
       <p>
         Увидел проблему? Дай нам знать о ней и мы ее решим!
@@ -100,7 +100,11 @@
       ?>
 
       <div class="couple">
-        <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
+        <div class="photo-wrap">
+          <canvas class="photo-cnv"></canvas>
+          <!-- <img class="photo" src="data:image/png;base64,<?=base64_encode($app['photo'])?>">
+          <img class="photo" src="data:image/png;base64,<?=base64_encode($app['solution'])?>"> -->
+        </div>
         <div class="wrap">
           <span class="date"><?=$app['date']?></span><br>
           <h3 class="title"><?=$app['title']?></h3><br>
@@ -115,6 +119,7 @@
 
   <script src="./media/js/jquery-3.3.1.min.js"></script>
   <script src="./media/js/bootstrap.js"></script>
+  <script src="./media/js/photo-cnv.js"></script>
 </body>
 
 </html>

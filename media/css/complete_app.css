@@ -25,14 +25,22 @@ body {
 
 .complete_app label {
   width: 100%;
-  padding: 100px 0;
+  padding: 75px 0;
   text-align: center;
-  font-size: 50px;
+  font-size: 100px;
   color: #111;
   border: 4px dashed #111;
   border-radius: 3px;
 }
 
+.complete_app label:hover {
+  background-color: #252525;
+}
+
 .complete_app input[type='file'] {
   display: none;
+}
+
+.complete_app input[type='submit']:hover {
+  background-color: #ddd;
 }

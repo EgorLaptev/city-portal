@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class=""><a href="http://city-portal/">Главная</a></li>
-          <li><a href="sign_up.php">Войти</a></li>
+          <li><a href="sign_up.php">Зарегистрироваться</a></li>
           <li class="active"><a href="sign_in.php">Войти</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->

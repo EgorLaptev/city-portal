@@ -34,7 +34,7 @@ if(isset($_POST['new'])) {
 
     require_once 'connect.php';
 
-    $resp = $pdo->query("INSERT INTO `applications` (`id`, `title`, `description`, `category`, `date`, `photo`, `author`, `status`) VALUES (NULL, '$title', '$description', '$category', '$date', '$photo', '$author', '0')");
+    $resp = $pdo->query("INSERT INTO `applications` (`id`, `title`, `description`, `category`, `date`, `photo`, `author`, `status`, `solution`) VALUES (NULL, '$title', '$description', '$category', '$date', '$photo', '$author', '0', '')");
 
     if($resp) {
       $_SESSION['new_error'] = '';

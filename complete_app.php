@@ -48,7 +48,7 @@
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php if($_SESSION['login'] == 'admin') : ?>
-                  <li><a href="panel.php">Панель управления</a></li>
+                  <li><a href="admin.php">Панель управления</a></li>
                 <?php endif ?>
                 <li><a href="list.php">Мои заявки</a></li>
                 <li><a href="new.php">Новая заявка</a></li>
@@ -65,11 +65,10 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <form enctype="multipart/form-data" class="complete_app" action="core/complete_app.php" method="POST">
-
+  <form enctype="multipart/form-data" class="complete_app" action="core/complete_app.php?id=<?=$_GET['id']?>" method="POST">
     <label>
       +
-      <input type="file" name="photo">
+      <input type="file" name="photo" required>
     </label>
     <input type="submit" name="complete_app" value="Сonfirm">
   </form>
